@@ -3,7 +3,7 @@
 
 lst = list(map(int, input('Введите числа через пробел:').split())) # функция map переводит каждый элемент в int, в данном случае  
 
-print(f'Stsrt list: {lst}')
+print(f'Start list: {lst}')
 new_lst = []
 [new_lst.append(i) for i in lst if i not in new_lst] #Добавляем элементы в новый список из старого при условии, что их еще нет в новом списке
 print(f'Result list: {new_lst}')
