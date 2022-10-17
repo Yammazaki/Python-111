@@ -17,15 +17,15 @@ def choice(tic_tac):
     valid = False
     while not valid:
         print("\n" * 3)
-        pl_ = input('Ваш ход ==> ' + tic_tac + ' --> ')
+        pl_i = input('Ваш ход ==> ' + tic_tac + ' --> ')
         try:
-            pl_ =int(pl_)
+            pl_i =int(pl_i)
         except:
             print('Что то не то)))')
             continue
-        if pl_ >= 1 and pl_ <= 9:
-            if(str(table[pl_-1]) not in '❌⭕'):
-                table[pl_-1] = tic_tac
+        if pl_i >= 1 and pl_i <= 9:
+            if(str(table[pl_i-1]) not in '❌⭕'):
+                table[pl_i-1] = tic_tac
                 valid = True
             else:
                 print('Клетка занята')
@@ -42,22 +42,22 @@ def victory_check(table):
     return False
 
 def game(table):
-    counter =0
+    count =0
     vic = False
     while not vic:
         game_field(table)
-        if counter % 2 == 0:
+        if count % 2 == 0:
             choice('❌')
         else:
             choice('⭕')
-        counter +=1
-        if counter > 4:
+        count +=1
+        if count > 4:
             tt_win = victory_check(table)
             if tt_win:
                 print(tt_win,'Победа')
                 vic = True
                 break
-            if counter == 9:
+            if count == 9:
                 print('Ничья товарищи!)')
         game_field(table)
 game(table)
