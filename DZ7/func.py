@@ -1,5 +1,4 @@
 import view
-import csv
 
 def get_add():
     list = ['Фамилию: ','Имя: ','номер телефона: ','коментарий']
@@ -18,8 +17,9 @@ def get_see():
         print(list)
 
 def get_find():
-   with open('people.csv', 'r', encoding = 'UTF-8') as file:
+    with open('people.csv', 'r', encoding = 'UTF-8') as file:
         data = []
+        data_see = []
         data = file.readlines()
         text = input('Введите слово для поиска: \n')
         for i in range(len(data)):
@@ -27,8 +27,30 @@ def get_find():
             row = []
             row = data[i]
             if text in row:
-                print(row)
-    
+                print(f'N {i+1} : {row}')
+        
+def get_del():
+    with open('people.csv', 'r', encoding = 'UTF-8') as file:
+        data = []
+        data = file.readlines()
+        print('-'*100)
+        for i in range(len(data)):
+            print(f'№ {i+1} |{data[i]}')
+    number = int(input('Введите номер контакта для удаления: '))
+    n = number-1
+    data.pop(n)
+    print('Вы удалили контакт')
+    for i in range(len(data)):
+            print(f'№ {i+1} |{data[i]}')
+    with open('people.txt', 'w', encoding = 'UTF-8') as file:
+        file.writelines(data)
+    with open('people.csv', 'w', encoding = 'UTF-8') as file:
+        file.writelines(data)
+
+            
+     
+
+   
 
                 
             
