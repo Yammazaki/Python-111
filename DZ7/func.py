@@ -6,7 +6,7 @@ def get_add():
     data = view.get_input(list)
     with open('people.csv', 'a', encoding = 'UTF-8') as file:
         file.writelines(
-            f'{data[0]} {data[1]} {data[2]} {data[3]} \n')
+            f'{data[0]}; {data[1]}; {data[2]}; {data[3]} \n')
 
 def get_see():
     with open('people.csv', 'r', encoding = 'UTF-8') as file:
