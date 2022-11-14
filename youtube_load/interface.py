@@ -1,6 +1,6 @@
 import tkinter
 from tkinter import *
-import pytube
+import pytube 
 from PIL import Image, ImageTk
 
 def load():
@@ -10,13 +10,14 @@ def load():
     video_best = streams.order_by('resolution').desc().first()
     audio_best = streams.filter(only_audio=True).desc().first()
     print(audio_best)
-    path = Entry.clipboard_get(enter_save)
+    print(video_best)
+    path = 'E:\Download'
     video_best.download(path)
     audio_best.download(path)
 
 def start():
     global enter_link
-    global enter_save
+   
     
     window = Tk()
     window.title('Downloader YouTube 1.0')
@@ -32,12 +33,11 @@ def start():
     
     link = Label(window, text='Введите ссылку для скачивания')
     link.grid(row=1, column=0, sticky = 'e')
-    save = Label(window, text='Введите путь для сохранения')
-    save.grid(row=2, column=0, sticky = 'e')  
+    link1 = Label(window, text='Сохраненные файлы E:\Download')
+    link1.grid(row=2, columnspan=2, sticky = 'ew')
     enter_link = Entry(window) 
     enter_link.grid(row=1, column=1, sticky = 'w',pady=10)
-    enter_save = Entry(window)  
-    enter_save.grid(row=2, column=1, sticky = 'w',pady=10)
+   
 
     btn = Button(window, text='скачать',command = load)
     btn.grid(row=3, columnspan=2, pady=10)
