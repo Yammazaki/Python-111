@@ -40,7 +40,7 @@ def get_max_page():
 def get_hh_jobs(last_page):
     jobs = []
     for page in range(last_page):
-        print(f'Парсинг страницы {page+1}')
+        print(f'Парсинг страницы HeadHunter: {page+1}')
         result = requests.get(f'{url}&page={page}', headers={
                               "user-agent": ua.random})
         soup = BeautifulSoup(result.text, 'html.parser')
