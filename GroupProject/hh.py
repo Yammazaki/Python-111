@@ -2,8 +2,7 @@ from os import name
 import requests
 import fake_useragent
 from bs4 import BeautifulSoup
-import time
-import json
+
 
 text = "python"
 ua = fake_useragent.UserAgent()
@@ -13,11 +12,13 @@ url = f"https://hh.ru/search/vacancy?no_magic=true&L_save_area=true&text={text}&
 
 def get_vacancy(html):
     name_vacancy = html.find('a').text
+    name_vacancy = name_vacancy.partition(',')[0]
     link = html.find('a')['href']
     company = html.find(
         'div', {'class': 'vacancy-serp-item__meta-info-company'}).text
+    company = company.partition(',')[0]
     city = html.find('div', {'data-qa': 'vacancy-serp__vacancy-address'}).text
-
+    city = city.partition(',')[0]
     return {'name': name_vacancy, 'company': company, 'location': city, 'link': link}
 
 
