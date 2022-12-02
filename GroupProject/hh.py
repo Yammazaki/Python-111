@@ -20,7 +20,7 @@ def get_vacancy(html):
     link = html.find('a')['href']
     company = html.find(
         'div', {'class': 'vacancy-serp-item__meta-info-company'}).text
-    company = company.partition(',')[0]
+    company = ' '.join(company.partition(',')[0].split())
     city = html.find('div', {'data-qa': 'vacancy-serp__vacancy-address'}).text
     city = city.partition(',')[0]
     cash = html.find('span', {'data-qa': "vacancy-serp__vacancy-compensation"})
