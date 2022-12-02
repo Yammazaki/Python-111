@@ -23,7 +23,13 @@ def get_vacancy(html):
     company = company.partition(',')[0]
     city = html.find('div', {'data-qa': 'vacancy-serp__vacancy-address'}).text
     city = city.partition(',')[0]
-    return {'name': name_vacancy, 'company': company, 'location': city, 'link': link}
+    cash = html.find('span', {'data-qa': "vacancy-serp__vacancy-compensation"})
+    if (cash == None):
+        cash = 'Не указана'
+    else:
+        cash = ' '.join((cash.text).split())
+    # cash = city.partition(',')[0]
+    return {'name': name_vacancy, 'company': company, 'cash': cash, 'location': city, 'link': link}
 
 # Поиск максимальной страницы, на которой мы проводим парсинг
 
