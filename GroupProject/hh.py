@@ -3,7 +3,7 @@ import fake_useragent
 from bs4 import BeautifulSoup
 
 # Создание переменных для их дальнейшего использования
-text = "python"
+text = input('Введите тект для поиска и парсинга вакансий на HH.ru: ')
 ua = fake_useragent.UserAgent()
 items = 100
 url = f"https://hh.ru/search/vacancy?no_magic=true&L_save_area=true&text={text}&items_on_page={items}"

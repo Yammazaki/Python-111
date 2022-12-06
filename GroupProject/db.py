@@ -2,7 +2,8 @@ import sqlite3
 
 def data_base(jobs):
     with sqlite3.connect('DataBase/database.db') as db:
-        cursor = db.cursor()
+        cursor=db.cursor()
+        cursor.execute("DROP TABLE vacancy") 
         cursor.execute(""" CREATE TABLE IF NOT EXISTS vacancy(name_vacancy TEXT,company TEXT,cash TEXT,coordinats TEXT,link TEXT) """)
         for job in jobs:
             vacancyes = []
