@@ -1,4 +1,3 @@
-from os import name
 import requests
 import fake_useragent
 from bs4 import BeautifulSoup
@@ -28,7 +27,6 @@ def get_vacancy(html):
         cash = 'Не указана'
     else:
         cash = ' '.join((cash.text).split())
-    # cash = city.partition(',')[0]
     return {'name': name_vacancy, 'company': company, 'cash': cash, 'location': city, 'link': link}
 
 # Поиск максимальной страницы, на которой мы проводим парсинг
